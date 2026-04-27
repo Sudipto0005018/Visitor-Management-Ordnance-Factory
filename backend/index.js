@@ -65,7 +65,7 @@ app.get("/api/helth", (req, res) => {
 });
 
 cron.schedule(
-  "24 15 * * *", // 3:24 pm
+  "00 11 * * *", // 11 am
   async () => {
     console.log("Running backup...");
 

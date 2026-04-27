@@ -78,6 +78,7 @@ async function signUp(req, res) {
 
 async function login(req, res) {
   const { username, password, tenantId } = req.body;
+
   if (!tenantId) {
     return res
       .status(400)
@@ -90,6 +91,7 @@ async function login(req, res) {
         new ApiErrorResponce(400, {}, "Username and password are required"),
       );
   }
+
   try {
     let query = "SELECT * FROM tenants WHERE tenant_id = ?";
     let [tenantRows] = await pool.query(query, [tenantId]);
@@ -99,6 +101,7 @@ async function login(req, res) {
         .status(404)
         .json(new ApiErrorResponce(404, {}, "Tenant not found"));
     }
+
     let startingDate = new Date(tenantRows[0].starting_date);
     let expiryDate = new Date(tenantRows[0].expary_date);
     const today = new Date();
@@ -116,21 +119,43 @@ async function login(req, res) {
         .status(401)
         .json(new ApiErrorResponce(404, {}, "Invalid credentials"));
     }
+
     const user = rows[0];
+
+    // Check if user account is active
+    if (user.status === 0 || user.status === false) {
+      return res
+        .status(403)
+        .json(
+          new ApiErrorResponce(
+            403,
+            {},
+            "Account is deactivated. Please contact super admin",
+          ),
+        );
+    }
+
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res
         .status(401)
         .json(new ApiErrorResponce(401, {}, "Invalid credentials"));
     }
+
     delete user.password;
     const token = jwt.sign(
-      { mobile: user.mobile, tenantId: user.tenant_id },
+      {
+        mobile: user.mobile,
+        tenantId: user.tenant_id,
+        userId: user.id,
+        role: user.role,
+      },
       process.env.JWT_SECRET,
       {
         expiresIn: "8h",
       },
     );
+
     return res
       .status(200)
       .cookie("token", token, cookieOptions)
