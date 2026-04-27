@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+      }
+      /* .container{ width:1000px; margin:auto; border:1px solid black; padding:20px; } */
+      .container {
+        width: 1000px;
+        margin: auto;
+        padding: 20px;
+      }
+      /* .container{ width:1000px; min-height:950px; margin:auto; border:1px solid black; padding:20px; display:flex; flex-direction:column; justify-content:space-between; } */
+      .header-title {
+        text-align: center;
+        line-height: 1.4;
+      }
+      .section-title {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+      .signature-line {
+        border-top: 1px solid black;
+        width: 300px;
+        margin: auto;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- HEADER -->
+      <table style="width: 100%">
+        <tr>
+          <td style="width: 120px; vertical-align: top">
+            <!-- GSF LOGO FROM SRC -->
+            <img
+              src="<%= logo %>"
+              style="width: 140px; height: 140px; margin-left: -15px"
+            />
+          </td>
+          <td class="header-title">
+            <div><b>चेहरा / (OBVERSE)</b></div>
+            <div><b>परिशिष्ट / APPENDIX - IV</b></div>
+            <div style="font-size: 18px">
+              <b>आकस्मिक आगंतुक पास / CASUAL VISITOR PASS</b>
+            </div>
+            <div><b>अहस्तांतरणीय / (NOT TRANSFERABLE)</b></div>
+            <div style="font-size: 13px; white-space: nowrap; margin-left: 5px">
+              सुरक्षा / गेट अधिकारी को गेट में वापस किया जाए / (TO BE RETURNED
+              TO GATE SECURITY / GATE OFFICER)
+            </div>
+            <!-- <div style="font-size:13px;"> सुरक्षा / गेट अधिकारी को गेट में वापस किया जाए / (TO BE RETURNED TO GATE SECURITY / GATE OFFICER) </div> -->
+          </td>
+          <td style="text-align: right; font-size: 13px; white-space: nowrap">
+            आई ए एफ जेड के बदले में /
+            In-liew of <br/> I.A.F.Z -3052
+          </td>
+        </tr>
+      </table>
+      <!-- ESTABLISHMENT -->
+      <div class="section-title">
+        स्थापना जिसके लिए मान्य / ESTABLISHMENT FOR WHICH VALID
+      </div>
+      <div style="text-align: center">
+        तोप एवं गोला निर्माण, काशीपुर कोलकाता - 700002 /
+        <b>GUN & SHELL FACTORY, COSSIPORE KOLKATA - 700002</b>
+      </div>
+      <table style="width: 100%; margin-top: 20px; border-collapse: collapse">
+        <tr>
+          <td style="width: 180px; white-space: nowrap">सं / NO</td>
+          <td style="width: 200px">
+            <span style="margin-left: 25px; display: inline-block"
+              ><%= visitor.reference %></span
+            >
+          </td>
+          <td style="width: 100px; text-align: right; padding-right: 25px">
+            दिनांक / DATE
+          </td>
+          <td style="width: 120px"><%= visitor.date %></td>
+          <td
+            rowspan="8"
+            style="text-align: center; vertical-align: top; width: 220px"
+          >
+            <img
+              src="<%= visitor.image %>"
+              style="width: 130px; height: 150px; border: 1px solid black"
+            />
+            <br /><br />
+            <b><%= visitor.contact %></b>
+          </td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">यूनिट का नाम / NAME OF UNIT</td>
+          <td>
+            <span style="margin-left: 25px; display: inline-block"
+              ><%= visitor.unit_name %></span
+            >
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">आगंतुक का नाम / VISITOR NAME</td>
+          <td>
+            <span style="margin-left: 25px; display: inline-block"
+              ><%= visitor.name %></span
+            >
+          </td>
+          <!-- <td style="white-space: nowrap; text-align: end; padding-right: 25px;"> -->
+          <td style="width: 100px; text-align: right; padding-right: 25px">
+            RFID No.
+          </td>
+          <td><%= visitor.rfid_num %></td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">राष्ट्रीयता / NATIONALITY</td>
+          <td>
+            <span style="margin-left: 25px; display: inline-block"
+              ><%= visitor.nationality %></span
+            >
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">पता / ADDRESS</td>
+          <td>
+            <span style="margin-left: 25px; display: inline-block"
+              ><%= visitor.address %></span
+            >
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">नगर / CITY</td>
+          <td>
+            <span style="margin-left: 25px; display: inline-block"
+              ><%= visitor.city %></span
+            >
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">किससे मिलना है / TO WHOM TO SEE</td>
+          <td>
+            <span style="margin-left: 25px; display: inline-block"
+              ><%= visitor.whome_to_meet %></span
+            >
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">पदनाम / DESIGNATION</td>
+          <td>
+            <span style="margin-left: 25px; display: inline-block"
+              ><%= visitor.designation %></span
+            >
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">उद्देश्य / PURPOSE</td>
+          <td>
+            <span style="margin-left: 25px; display: inline-block"
+              ><%= visitor.purpose %></span
+            >
+          </td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">प्रवेश का समय / TIME OF ADMISSION</td>
+          <td>
+            <span style="margin-left: 25px; display: inline-block">
+              <%= visitor.issueTime %>
+            </span>
+          </td>
+          <td style="white-space: nowrap">
+            आगंतुक के हस्ताक्षर / SIGN OF VISITOR
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">रिपोर्टिंग समय / REPORTING TIME</td>
+          <td></td>
+          <td style="white-space: nowrap">अंदर आने का समय / TIME IN</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="white-space: nowrap">छोड़ने का समय / RELEASE TIME</td>
+          <td></td>
+          <td style="white-space: nowrap">बाहर जाने का समय / TIME OUT</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+      <!-- PERMISSION -->
+      <div style="margin-top: 20px; text-align: center">
+        प्लांट/शॉप फ्लोर में प्रवेश की अनुमति है/नहीं है /
+        <b>Permitted / Not permitted to visit plant/ shop Floor</b>
+      </div>
+      <!-- SIGNATURE -->
+      <table style="width: 100%; margin-top: 40px">
+        <tr>
+          <td style="text-align: center">
+            <div class="signature-line"></div>
+            अधिकारी के हस्ताक्षर / <b>SIGNATURE OF THE OFFICER</b>
+          </td>
+          <td style="text-align: center">
+            <div class="signature-line"></div>
+            कृते सुरक्षा अधिकारी / <b>FOR SECURITY OFFICER</b>
+          </td>
+        </tr>
+      </table>
+      <!-- NOTE -->
+      <!-- NOTE -->
+    <div
+  style="
+    margin-top: 20px;
+    font-size: 12px;
+    display: flex;
+    gap: 20px;
+  "
+>
+  <!-- LEFT (ENGLISH) -->
+  <div style="width: 50%">
+    <b>Note 1.</b> The visitor will not visit any body else except the
+    officer mentioned in the slip
+    <br />
+    <b style="margin-left: 28px;">2.</b> This pass is valid only for the date of issue
+  </div>
+
+  <!-- RIGHT (HINDI) -->
+  <div style="width: 50%; text-align: left;">
+    <b>नोट 1.</b> उपरोक्त उल्लिखित अधिकारी के अलावा अन्य किसी से आगंतुक नहीं मिल सकते
+    <br />
+    <b style="margin-left: 22px;">2.</b> यह पास केवल जारी किए गए दिन के लिए ही मान्य है
+  </div>
+</div>
+    </div>
+  </body>
+</html>

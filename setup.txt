@@ -1,0 +1,11 @@
+1. check ping from pc-1 to backup pc (ping 192.168.29.201 -t)
+
+2. setup a share folder in backup pc
+
+
+3.
+net use \\backup_pc_ip\shared_folder_name /user:"output_from_whoami" backup_pc_password
+
+net use \\192.168.29.201\ofb-backup /user:"gbthp\user" 1975
+net use \\backup_pc_ip\shared_folder_name /user:"laptop-3m9vrtd1\sudipto dutta" 1975
+
