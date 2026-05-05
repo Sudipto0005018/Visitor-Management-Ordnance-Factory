@@ -144,22 +144,20 @@ const DocumentTypeSelect = ({ configDocumentTypes = [], value, onChange }) => {
               <SelectItem
                 key={type}
                 value={type}
-                className="flex items-center justify-between group"
+                className="!flex !w-full !justify-between items-center group"
               >
-                <div className="flex w-full items-center justify-between">
-                  <span>{type}</span>
+                <span className="flex-1 text-left">{type}</span>
 
-                  <button
-                    className="ml-2 opacity-0 group-hover:opacity-100 transition cursor-pointer"
-                    onPointerDown={(e) => {
-                      e.stopPropagation();
-                      e.preventDefault();
-                      handleDelete(type);
-                    }}
-                  >
-                    <FaTrash />
-                  </button>
-                </div>
+                <button
+                  className="ml-18 opacity-0 group-hover:opacity-100 transition cursor-pointer"
+                  onPointerDown={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    handleDelete(type);
+                  }}
+                >
+                  <FaTrash />
+                </button>
               </SelectItem>
             ))
           ) : (

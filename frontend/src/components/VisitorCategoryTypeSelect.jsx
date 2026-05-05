@@ -173,20 +173,23 @@ const VisitorCategoryTypeSelect = ({
 
           {filteredList.length > 0 ? (
             filteredList.map((type) => (
-              <SelectItem key={type} value={type} className="group relative">
-                <div className="flex w-full items-center justify-between pr-6">
-                  <span>{type}</span>
-                  <button
-                    className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-                    onPointerDown={(e) => {
-                      e.stopPropagation();
-                      e.preventDefault();
-                      handleDelete(type);
-                    }}
-                  >
-                    <FaTrash />
-                  </button>
-                </div>
+              <SelectItem
+                key={type}
+                value={type}
+                className="!flex !w-full !items-center !justify-between group"
+              >
+                <span className="flex-1 pr-18 text-left">{type}</span>
+
+                <button
+                  className="opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                  onPointerDown={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    handleDelete(type);
+                  }}
+                >
+                  <FaTrash />
+                </button>
               </SelectItem>
             ))
           ) : (
